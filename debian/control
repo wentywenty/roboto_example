@@ -1,0 +1,10 @@
+Package: roboto-py-example
+Version: VERSION_PLACEHOLDER
+Section: misc
+Priority: optional
+Architecture: all
+Depends: roboto-base (>= 1.0.0), roboto-motors (>= 1.0.0), roboto-imu (>= 1.0.0)
+Maintainer: RoboParty <2321901849@qq.com>
+Description: RoboParty Python example scripts
+ Python SDK example scripts for motor control, IMU reading,
+ motion playback and zero-position calibration.
