@@ -1,11 +1,10 @@
 #!/bin/bash
-# Build roboto-py-example Debian package (Architecture: all, no cmake build)
+# Build roboto-example Debian package (Architecture: all, no cmake build)
 set -e
 
-PACKAGE="roboto-py-example"
-VERSION="1.0.0"
+PACKAGE="roboto-example"
+VERSION="1.0.1"
 PREFIX="/opt/roboparty"
-INSTALL_DIR="${PREFIX}/sample"
 DEB_DIR="${PACKAGE}_${VERSION}_all"
 
 echo ">>> Building ${PACKAGE} ${VERSION}"
@@ -13,11 +12,14 @@ echo ">>> Building ${PACKAGE} ${VERSION}"
 # Clean previous staging directory and deb file
 rm -rf "${DEB_DIR}" "${DEB_DIR}.deb"
 mkdir -p "${DEB_DIR}/DEBIAN"
-mkdir -p "${DEB_DIR}${INSTALL_DIR}"
 
-# Copy scripts and config
-cp -r scripts/. "${DEB_DIR}${INSTALL_DIR}/"
-find "${DEB_DIR}${INSTALL_DIR}" -name "*.py" -exec chmod 755 {} \;
+# Install sample scripts and config separately
+mkdir -p "${DEB_DIR}${PREFIX}/share/sample/scripts"
+cp -r scripts/. "${DEB_DIR}${PREFIX}/share/sample/scripts/"
+find "${DEB_DIR}${PREFIX}/share/sample/scripts" -name "*.py" -exec chmod 755 {} \;
+
+mkdir -p "${DEB_DIR}${PREFIX}/share/sample/config"
+cp -r config/. "${DEB_DIR}${PREFIX}/share/sample/config/"
 
 # Copy DEBIAN maintainer scripts
 cp debian/postinst  "${DEB_DIR}/DEBIAN/"
