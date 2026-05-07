@@ -1,10 +1,13 @@
-Package: roboto-example
-Version: VERSION_PLACEHOLDER
+Source: roboto-example
 Section: misc
 Priority: optional
-Architecture: all
-Depends: roboto-base (>= 1.0.0), roboto-motors (>= 1.0.0), roboto-imu (>= 1.0.0)
 Maintainer: RoboParty <2321901849@qq.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.0
+
+Package: roboto-example
+Architecture: all
+Depends: roboto-base (>= 1.0.0), roboto-motors (>= 1.0.0), roboto-imu (>= 1.0.0), ${misc:Depends}
 Description: RoboParty Python example scripts
  Python SDK example scripts for motor control, IMU reading,
  motion playback and zero-position calibration.

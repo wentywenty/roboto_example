@@ -1,2 +1,12 @@
-*.deb
-roboto-example_*/
+#environment
+.vscode/
+.idea/
+
+# debhelper build outputs
+obj-*/
+debian/files
+debian/debhelper-build-stamp
+debian/*.debhelper.log
+debian/*.substvars
+debian/roboto-*/
+debian/.debhelper/
